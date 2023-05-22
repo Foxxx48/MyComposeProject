@@ -1,5 +1,6 @@
 package com.example.mycomposeproject.ui
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -9,34 +10,50 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.mycomposeproject.ui.theme.MyComposeProjectTheme
 
-@Preview
+
 @Composable
 fun InstagramProfileCard() {
-    Row(
+    Card(
         modifier = Modifier
-            .fillMaxWidth()
             .padding(8.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceEvenly
+        shape = RoundedCornerShape(
+           topStart = 4.dp,
+            topEnd = 4.dp
+        ),
+        backgroundColor = MaterialTheme.colors.background,
+        border = BorderStroke(1.dp, MaterialTheme.colors.onBackground)
     ) {
-        Box(
+        Row(
             modifier = Modifier
-                .background(Color.Green)
-                .size(50.dp),
+                .fillMaxWidth()
+                .padding(8.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceEvenly
         ) {
+            Box(
+                modifier = Modifier
+                    .background(Color.Green)
+                    .size(50.dp),
+            ) {
 
+            }
+            TwoBoxes()
+            TwoBoxes()
+            TwoBoxes()
         }
-        TwoBoxes()
-        TwoBoxes()
-        TwoBoxes()
     }
+
 }
 
 @Composable
@@ -63,6 +80,27 @@ private fun TwoBoxes() {
 
         }
 
+    }
+
+}
+
+@Preview
+@Composable
+fun PreviewCardLight() {
+    MyComposeProjectTheme(
+        darkTheme = false
+    ) {
+        InstagramProfileCard()
+    }
+}
+
+@Preview
+@Composable
+fun PreviewCardDark() {
+    MyComposeProjectTheme(
+        darkTheme = true
+    ) {
+        InstagramProfileCard()
     }
 
 }
