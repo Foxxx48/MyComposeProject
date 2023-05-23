@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -37,22 +38,50 @@ fun InstagramProfileCard2() {
         backgroundColor = MaterialTheme.colors.background,
         border = BorderStroke(1.dp, MaterialTheme.colors.onBackground)
     ) {
-        Row(
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(8.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceAround
-        ) {
-            Image(
+                .padding(16.dp),
+            ) {
+            Row(
                 modifier = Modifier
-                    .size(50.dp),
-                painter = painterResource(id = R.drawable.ic_instagram),
-                contentDescription = "")
+                    .fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceAround
+            ) {
+                Image(
+                    modifier = Modifier
+                        .size(50.dp),
+                    painter = painterResource(id = R.drawable.ic_instagram),
+                    contentDescription = "")
 
-            UserStatistics("Posts", "1.345")
-            UserStatistics("Followers", "436M")
-            UserStatistics("Following", "77")
+                UserStatistics("Posts", "1.345")
+                UserStatistics("Followers", "436M")
+                UserStatistics("Following", "77")
+            }
+
+            Text(
+                text = "Instagram",
+                fontStyle = FontStyle.Normal,
+                fontWeight = FontWeight.Bold,
+                fontSize = 32.sp,
+                fontFamily = FontFamily.Cursive)
+            Text(
+                text = "#YoursToMake",
+                fontStyle = FontStyle.Normal,
+                fontWeight = FontWeight.Medium,
+                fontSize = 14.sp,)
+            Text(
+                text = "www.facebook.com/emotional_health",
+                fontStyle = FontStyle.Normal,
+                fontWeight = FontWeight.Medium,
+                fontSize = 14.sp)
+            Button(
+                onClick = { /*TODO*/ }) {
+                Text(text = "Follow")
+            }
+
+
         }
     }
 
