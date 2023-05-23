@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.mycomposeproject.ui.InstagramProfileCard
+import com.example.mycomposeproject.ui.InstagramProfileCard2
 import com.example.mycomposeproject.ui.theme.MyComposeProjectTheme
 
 class MainActivity : ComponentActivity() {
@@ -30,7 +30,7 @@ class MainActivity : ComponentActivity() {
                         .fillMaxSize()
                         .background(MaterialTheme.colors.background)
                 ) {
-                    InstagramProfileCard()
+                    InstagramProfileCard2()
                 }
 
             }
