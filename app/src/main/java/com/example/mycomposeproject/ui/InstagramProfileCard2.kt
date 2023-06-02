@@ -10,12 +10,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults.buttonColors
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -30,9 +31,11 @@ import com.example.mycomposeproject.R
 @Preview
 @Composable
 fun InstagramProfileCard2() {
-    val isFollowed = remember {
+
+    val isFollowed = rememberSaveable() {
         mutableStateOf(false)
     }
+
     Card(
         modifier = Modifier
             .padding(8.dp),
@@ -89,7 +92,14 @@ fun InstagramProfileCard2() {
                 onClick = {
                     isFollowed.value = !isFollowed.value
 
-                }) {
+                }, colors = buttonColors(
+                    backgroundColor = if (isFollowed.value) {
+                        MaterialTheme.colors.primary.copy(0.5F)
+                    } else {
+                        MaterialTheme.colors.primary
+                    }
+                )
+            ) {
                 val text = if (isFollowed.value) {
                     "Unfollow"
                 } else {
@@ -124,11 +134,3 @@ private fun UserStatistics(title: String, value: String) {
     }
 }
 
-@Composable
-fun TestImage() {
-    Image(
-        painter = painterResource(id = R.drawable.ic_instagram),
-        contentDescription = ""
-    )
-
-}
