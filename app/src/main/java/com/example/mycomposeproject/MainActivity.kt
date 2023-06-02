@@ -16,12 +16,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModelProvider
 import com.example.mycomposeproject.ui.InstagramProfileCard2
 import com.example.mycomposeproject.ui.theme.MyComposeProjectTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val viewModel = ViewModelProvider(this) [MainViewModel::class.java]
 
         setContent {
             MyComposeProjectTheme() {
@@ -30,7 +32,7 @@ class MainActivity : ComponentActivity() {
                         .fillMaxSize()
                         .background(MaterialTheme.colors.background)
                 ) {
-                    InstagramProfileCard2()
+                    InstagramProfileCard2(viewModel)
                 }
 
             }
