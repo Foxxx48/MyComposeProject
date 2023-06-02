@@ -14,6 +14,8 @@ import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -28,6 +30,9 @@ import com.example.mycomposeproject.R
 @Preview
 @Composable
 fun InstagramProfileCard2() {
+    val isFollowed = remember {
+        mutableStateOf(false)
+    }
     Card(
         modifier = Modifier
             .padding(8.dp),
@@ -42,7 +47,7 @@ fun InstagramProfileCard2() {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
-            ) {
+        ) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth(),
@@ -53,7 +58,8 @@ fun InstagramProfileCard2() {
                     modifier = Modifier
                         .size(50.dp),
                     painter = painterResource(id = R.drawable.ic_instagram),
-                    contentDescription = "")
+                    contentDescription = ""
+                )
 
                 UserStatistics("Posts", "1.345")
                 UserStatistics("Followers", "436M")
@@ -65,26 +71,34 @@ fun InstagramProfileCard2() {
                 fontStyle = FontStyle.Normal,
                 fontWeight = FontWeight.Bold,
                 fontSize = 32.sp,
-                fontFamily = FontFamily.Cursive)
+                fontFamily = FontFamily.Cursive
+            )
             Text(
                 text = "#YoursToMake",
                 fontStyle = FontStyle.Normal,
                 fontWeight = FontWeight.Medium,
-                fontSize = 14.sp,)
+                fontSize = 14.sp,
+            )
             Text(
                 text = "www.facebook.com/emotional_health",
                 fontStyle = FontStyle.Normal,
                 fontWeight = FontWeight.Medium,
-                fontSize = 14.sp)
+                fontSize = 14.sp
+            )
             Button(
-                onClick = { /*TODO*/ }) {
-                Text(text = "Follow")
+                onClick = {
+                    isFollowed.value = !isFollowed.value
+
+                }) {
+                val text = if (isFollowed.value) {
+                    "Unfollow"
+                } else {
+                    "Follow"
+                }
+                Text(text = text)
             }
-
-
         }
     }
-
 }
 
 @Composable
@@ -114,6 +128,7 @@ private fun UserStatistics(title: String, value: String) {
 fun TestImage() {
     Image(
         painter = painterResource(id = R.drawable.ic_instagram),
-        contentDescription = "")
+        contentDescription = ""
+    )
 
 }
