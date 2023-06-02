@@ -88,26 +88,32 @@ fun InstagramProfileCard2() {
                 fontWeight = FontWeight.Medium,
                 fontSize = 14.sp
             )
-            Button(
-                onClick = {
-                    isFollowed.value = !isFollowed.value
-
-                }, colors = buttonColors(
-                    backgroundColor = if (isFollowed.value) {
-                        MaterialTheme.colors.primary.copy(0.5F)
-                    } else {
-                        MaterialTheme.colors.primary
-                    }
-                )
-            ) {
-                val text = if (isFollowed.value) {
-                    "Unfollow"
-                } else {
-                    "Follow"
-                }
-                Text(text = text)
+            FollowButton(isFollowed = isFollowed.value) {
+                isFollowed.value = !isFollowed.value
             }
         }
+    }
+}
+
+@Composable
+fun FollowButton(isFollowed: Boolean, clickListener: () -> Unit) {
+    Button(
+        onClick = {
+            clickListener()
+        }, colors = buttonColors(
+            backgroundColor = if (isFollowed) {
+                MaterialTheme.colors.primary.copy(0.5F)
+            } else {
+                MaterialTheme.colors.primary
+            }
+        )
+    ) {
+        val text = if (isFollowed) {
+            "Unfollow"
+        } else {
+            "Follow"
+        }
+        Text(text = text)
     }
 }
 
@@ -133,4 +139,6 @@ private fun UserStatistics(title: String, value: String) {
         )
     }
 }
+
+
 
