@@ -27,14 +27,25 @@ class MainViewModel : ViewModel() {
         val modifiedList =
             _instaModels.value?.toMutableList()
                 ?: mutableListOf()
-        modifiedList.replaceAll {
 
+        modifiedList.replaceAll {
             if (it == model) {
                 it.copy(isFollowed = !it.isFollowed)
             } else {
                 it
             }
         }
+        _instaModels.value = modifiedList
+    }
+
+   fun deleteInstaModel(model: InstaModel) {
+
+        val modifiedList =
+            _instaModels.value?.toMutableList()
+                ?: mutableListOf()
+
+        modifiedList.remove(model)
+
         _instaModels.value = modifiedList
     }
 }
