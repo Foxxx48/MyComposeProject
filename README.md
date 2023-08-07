@@ -1,7 +1,7 @@
 # My Compose Project
 Test of Ui card with Jetpack Compose.
 
-List of items with abillity to delete item and press/ unpressed follow button.
+List of items with ability to delete item and use follow/unfollow button.
 
 ### Languages and Tools:
 <img align="left" alt="Kotlin" width="64px" hight="64px" src="https://github.com/devicons/devicon/blob/master/icons/kotlin/kotlin-original.svg" style="padding-right:10px;" />
